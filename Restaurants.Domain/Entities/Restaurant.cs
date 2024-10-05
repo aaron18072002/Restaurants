@@ -17,7 +17,7 @@ namespace Restaurants.Domain.Entities
         public string Name { get; set; } = string.Empty;
 
         [Required]
-        [MaxLength(100)]
+        [MaxLength(400)]
         public string Description { get; set; } = string.Empty;
 
         [Required]

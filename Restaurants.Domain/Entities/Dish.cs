@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -23,6 +24,9 @@ namespace Restaurants.Domain.Entities
 
         [Required]
         public decimal Price { get; set; }
+
+        [AllowNull]
+        public int KiloCalories { get; set; }
 
         //[ForeignKey("RestaurantId")]
         public int RestaurantId { get; set; }

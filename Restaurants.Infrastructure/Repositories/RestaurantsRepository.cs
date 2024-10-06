@@ -24,5 +24,13 @@ namespace Restaurants.Infrastructure.Repositories
 
             return restaurant;
         }
+
+        public async Task<Restaurant?> GetByIdAsync(int id)
+        {
+            var restaurant = await this._db.Restaurants.FirstOrDefaultAsync
+                (r => r.Id == id);
+
+            return restaurant;
+        }
     }
 }

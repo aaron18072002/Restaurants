@@ -21,7 +21,27 @@ namespace Restaurants.API.Controllers
         [Route("[action]")]
         public async Task<IActionResult> GetAll()
         {
+            this._logger.LogInformation("{ControllerName}.{MethodName} action get method",
+                nameof(RestaurantsController), nameof(this.GetAll));
+
             var restaurant = await this._restaurantsService.GetAllRestaurants();
+
+            return this.Ok(restaurant);
+        }
+
+        [HttpGet]
+        [Route("[action]/{id}")]
+        public async Task<IActionResult> GetById([FromRoute]int id)
+        {
+            this._logger.LogInformation("{ControllerName}.{MethodName} action get method",
+                nameof(RestaurantsController), nameof(this.GetById));
+
+            var restaurant = await this._restaurantsService.GetRestaurantById(id);
+
+            if(restaurant == null)
+            {
+                return this.NotFound();
+            }
 
             return this.Ok(restaurant);
         }
